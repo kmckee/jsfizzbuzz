@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="endAt" value="10" />   
+    <button id="go">Go</button>
+    <ul>
+
+    </ul>
+    <script>
+        (function() {
+            const go = document.querySelector('#go');
+            const endAt = document.querySelector('#endAt');
+
+            go.addEventListener('click', fizzBuzz);
+
+            function fizzBuzz() {
+                const max = parseInt(endAt.value);
+                const ul = document.querySelector('ul');
+                ul.innerHTML = '';
+                for (let index = 1; index <= max; index++) {
+                    const li = document.createElement('li');
+                    li.innerHTML = getFizzBuzzFor(index);
+                    ul.appendChild(li)
+                }
+            }
+            function getFizzBuzzFor(number) {
+                const multipleOf3 = number % 3 === 0;
+                const multipleOf5 = number % 5 === 0;
+                if (multipleOf3 && multipleOf5){
+                    return "FizzBuzz";
+                } else if (multipleOf3) {
+                    return "Fizz";
+                } else if (multipleOf5) {
+                    return "Buzz";
+                }
+                return `${number}`;
+            }
+        })();
+    </script>
+</body>
+</html>
